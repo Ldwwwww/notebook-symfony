@@ -17,13 +17,16 @@ class Note
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $updateAt = null;
+    private ?\DateTimeImmutable $updateAt = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Author = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Content = null;
 
     public function getId(): ?int
     {
@@ -42,12 +45,12 @@ class Note
         return $this;
     }
 
-    public function getUpdateAt(): ?string
+    public function getUpdateAt(): ?\DateTimeImmutable
     {
         return $this->updateAt;
     }
 
-    public function setUpdateAt(string $updateAt): self
+    public function setUpdateAt(\DateTimeImmutable $updateAt): self
     {
         $this->updateAt = $updateAt;
 
@@ -74,6 +77,18 @@ class Note
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->Content;
+    }
+
+    public function setContent(string $Content): self
+    {
+        $this->Content = $Content;
 
         return $this;
     }
